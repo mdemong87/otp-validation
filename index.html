@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- font awesome cdn link here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- tailwindcss cdn link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- custom css link here -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="h-screen w-screen flex justify-center items-center text-center bg-green-800 flex-col">
+        <div class="w-[400px] h-fit bg-gray-100 shadow-xl rounded-lg py-6 px-2">
+            <div>
+                <i class="text-5xl text-green-800 pb-5 fa-solid fa-envelope-circle-check"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">
+                OTP Validation
+            </h1>
+            <div class="flex justify-center items-center mt-10 mb-7">
+                <div class="flex gap-4 items-center" id="inputContainer">
+                    <input class="w-[50px] h-[50px] rounded-md outline-3 outline-gray-900 border border-2 border-green-600 p-3 pl-4 text-2xl font-semibold" type="text" name="" maxlength="1" id=""/>
+                    <input class="w-[50px] h-[50px] rounded-md outline-3 outline-gray-900 border border-2 border-green-600 p-3 pl-4 text-2xl font-semibold" type="text" name="" maxlength="1" id=""/>
+                    <input class="w-[50px] h-[50px] rounded-md outline-3 outline-gray-900 border border-2 border-green-600 p-3 pl-4 text-2xl font-semibold" type="text" name="" maxlength="1" id=""/>
+                    <input class="w-[50px] h-[50px] rounded-md outline-3 outline-gray-900 border border-2 border-green-600 p-3 pl-4 text-2xl font-semibold" type="text" name="" maxlength="1" id=""/>
+                </div>
+            </div>
+            <p class="flex flex-col">
+                <span class="font-semibold">Did not Get OTP Code?</span>
+                <span id="ResendOtp" class="text-green-700 font-semibold cursor-pointer">Click here to Resend OTP</span>
+            </p>
+            <div class="w-full flex justify-center">
+                <div class="flex my-8 gap-8 items-center justify-between border w-[80%]">
+                    <button class="w-full border-green-600 border border-2 rounded-md font-semibold text-xl p-1">Cencle</button>
+                    <button id="varifyBtn" class="w-full border-green-600 border border-2 rounded-md font-semibold text-xl p-1 bg-green-800 text-white">Verify</button>
+                </div>
+            </div>
+        </div>
+        <div id="sendOtpContainer" class="bg-gray-200 shadow-xl rounded-md mt-8 w-[400px]">
+            <button id="sendOTPBtn" class="font-semibold w-full py-2 text-xl cursor-pointer">Send OTP</button>
+        </div>
+    </div>
+    <div id="modal" class="absolute hidden top-0 left-0 w-screen h-screen justify-center items-center">
+        <!-- otp box -->
+        <div id="otpbox" class="bg-gray-50 p-10 rounded-md hidden">
+            <h2 class="font-semibold text-2xl">You OTP is : <span id="otpValueModal"></span></h2>
+            <button id="otpmodalOkBtn" class="bg-green-800 w-full font-semibold text-2xl py-1 rounded-md mt-9 text-center text-gray-50">Ok</button>
+        </div>
+        <!-- loading -->
+        <div id="loading" class="hidden bg-gray-50 p-8 rounded-xl">
+            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+
+        <!-- varified -->
+        <div id="varified" class="bg-gray-50 p-10 rounded-md hidden">
+            
+            <div class="flex w-full justify-center">
+                <i class="fa-regular fa-circle-check text-center text-7xl text-green-800 pb-5"></i>
+            </div>
+
+            <h2 class="font-semibold text-2xl">Your OTP Varification Successfull</h2>
+
+            <button id="varificationOkBtn" class="bg-green-800 w-full font-semibold text-2xl py-1 rounded-md mt-9 text-center text-gray-50">Ok</button>
+        </div>
+
+        <!-- unvarified -->
+        <div id="unvarified" class="bg-gray-50 p-10 rounded-md hidden">
+            
+            <div class="flex w-full justify-center mb-5">
+                <div class="border-4 flex justify-center items-center border-green-800 rounded-full w-[70px] h-[70px] p-2">
+                    <i class="fa-solid fa-xmark text-center text-5xl text-green-800"></i>    
+                </div>
+            </div>
+
+            <h2 class="font-semibold text-2xl text-center">Opps!</h2>
+            <h2 class="font-semibold text-2xl">Your OTP Does not Match!</h2>
+
+            <button id="unvarificationOkBtn" class="bg-green-800 w-full font-semibold text-2xl py-1 rounded-md mt-9 text-center text-gray-50">Ok</button>
+        </div>
+    </div>
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
